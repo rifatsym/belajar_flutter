@@ -50,6 +50,28 @@ class _HomePageState extends State<HomePage> {
       appBar: AppBar(
         title: Text("App Tittle"),
       ),
+      drawer: Drawer(
+        child: Column(
+          children: [
+            Container(
+              alignment: Alignment.center,
+              color: Colors.deepPurpleAccent,
+              height: 100,
+              width: double.infinity,
+              child: Text(
+                "Drawer Header",
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 25,
+                ),
+              ),
+            ),
+            ListView(
+              children: [],
+            )
+          ],
+        ),
+      ),
       body: Center(
         child: Column(
           children: [
@@ -98,6 +120,33 @@ class _HomePageState extends State<HomePage> {
                           ));
                 },
                 child: Text("Show Dialog")),
+            Padding(padding: EdgeInsets.all(16.0)),
+            ElevatedButton(
+                onPressed: () {
+                  showModalBottomSheet(
+                    context: context,
+                    builder: (context) => Container(
+                      height: 200,
+                      child: ListView(
+                        children: [
+                          ListTile(
+                            leading: Icon(Icons.plus_one),
+                            title: Text("Menu 1"),
+                          ),
+                          ListTile(
+                            leading: Icon(Icons.ac_unit),
+                            title: Text("Menu 2"),
+                          ),
+                          ListTile(
+                            leading: Icon(Icons.airplanemode_off),
+                            title: Text("Menu 3"),
+                          ),
+                        ],
+                      ),
+                    ),
+                  );
+                },
+                child: Text("Show Bottom Sheet")),
             Padding(padding: EdgeInsets.all(110.0)),
             BottomNavigationBar(
                 currentIndex: index,
