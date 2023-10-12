@@ -75,6 +75,23 @@ class _HomePageState extends State<HomePage> {
           style: ElevatedButton.styleFrom(
               padding: EdgeInsets.symmetric(horizontal: 30, vertical: 20)),
         ),
+        Padding(padding: EdgeInsets.all(190.0)),
+        BottomNavigationBar(
+            currentIndex: 1,
+            onTap: (value) {
+              Navigator.push(
+                  context, MaterialPageRoute(builder: (context) => MyApp()));
+            },
+            items: [
+              BottomNavigationBarItem(
+                icon: Icon(Icons.home),
+                label: "home",
+              ),
+              BottomNavigationBarItem(
+                icon: Icon(Icons.person),
+                label: "Login",
+              ),
+            ]),
       ]),
     );
   }

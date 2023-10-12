@@ -54,21 +54,28 @@ class _HomePageState extends State<HomePage> {
         child: Column(
           children: [
             Container(
-              alignment: Alignment.center,
-              color: Colors.deepPurpleAccent,
+              color: Colors.blue,
+              width: 320,
               height: 100,
-              width: double.infinity,
-              child: Text(
-                "Drawer Header",
-                style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 25,
+              child: Center(
+                child: Text(
+                  "Drawer Header",
+                  style: TextStyle(color: Colors.white, fontSize: 25),
                 ),
               ),
             ),
-            ListView(
-              children: [],
-            )
+            ListTile(
+              leading: Icon(Icons.add_alert),
+              title: Text("Menu 1"),
+            ),
+            ListTile(
+              leading: Icon(Icons.apartment_outlined),
+              title: Text("Menu 2"),
+            ),
+            ListTile(
+              leading: Icon(Icons.accessible_forward_outlined),
+              title: Text("Menu 3"),
+            ),
           ],
         ),
       ),
