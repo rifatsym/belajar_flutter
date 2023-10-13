@@ -9,6 +9,7 @@ class login extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       home: HomePage(),
     );
   }
@@ -23,12 +24,28 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   bool isHidden = true;
-
+  int index = 1;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: Text("Login")),
       body: ListView(padding: EdgeInsets.all(20), children: [
+        Padding(padding: EdgeInsets.all(20.0)),
+        Image(
+          image: AssetImage("asset/gambar2.png"),
+          width: 100,
+          height: 100,
+        ),
+        Center(
+          child: Title(
+            color: Colors.black,
+            child: Text(
+              "App Title",
+              style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+            ),
+          ),
+        ),
+        Padding(padding: EdgeInsets.all(18.0)),
         TextField(
           autocorrect: false,
           keyboardType: TextInputType.emailAddress,
@@ -63,6 +80,10 @@ class _HomePageState extends State<HomePage> {
             border: OutlineInputBorder(),
           ),
         ),
+        Align(
+          alignment: Alignment.centerRight,
+          child: Text("Lupa Password?"),
+        ),
         SizedBox(
           height: 50,
         ),
@@ -76,23 +97,28 @@ class _HomePageState extends State<HomePage> {
               padding: EdgeInsets.symmetric(horizontal: 30, vertical: 20)),
         ),
         Padding(padding: EdgeInsets.all(190.0)),
-        BottomNavigationBar(
-            currentIndex: 1,
-            onTap: (value) {
+      ]),
+      bottomNavigationBar: BottomNavigationBar(
+          currentIndex: index,
+          onTap: (value) {
+            setState(() {
+              index = value;
+            });
+            if (index == 0) {
               Navigator.push(
                   context, MaterialPageRoute(builder: (context) => MyApp()));
-            },
-            items: [
-              BottomNavigationBarItem(
-                icon: Icon(Icons.home),
-                label: "home",
-              ),
-              BottomNavigationBarItem(
-                icon: Icon(Icons.person),
-                label: "Login",
-              ),
-            ]),
-      ]),
+            }
+          },
+          items: [
+            BottomNavigationBarItem(
+              icon: Icon(Icons.home),
+              label: "home",
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.person),
+              label: "Login",
+            ),
+          ]),
     );
   }
 }
